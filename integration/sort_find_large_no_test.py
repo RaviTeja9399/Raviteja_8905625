@@ -1,4 +1,3 @@
-[12:45 PM] Jaskirat Kaur
 import find_large
  
 def test_cube_root():
