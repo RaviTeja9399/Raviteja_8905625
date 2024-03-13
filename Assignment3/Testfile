@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.UI;
 
 IWebDriver driver = new ChromeDriver();
 
-// Navigating to the Shein Canada homepage
+// Navigating to the Nike Canada homepage
 driver.Navigate().GoToUrl("https://www.nike.com/ca/");
 
 // Maximizing the window
