@@ -1,0 +1,58 @@
+// Setting up the webdriver
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.UI;
+
+IWebDriver driver = new ChromeDriver();
+
+// Navigating to the Shein Canada homepage
+driver.Navigate().GoToUrl("https://www.nike.com/ca/");
+
+// Maximizing the window
+driver.Manage().Window.Maximize();
+
+// Wait for the page to load
+Thread.Sleep(5000);
+
+// Searching for men's fashion
+driver.FindElement(By.Id("VisualSearchInput")).SendKeys("men fashion");
+driver.FindElement(By.Id("VisualSearchInput")).SendKeys(Keys.Enter);
+
+// Wait for the search results to load
+Thread.Sleep(5000);
+
+// Selecting an item
+driver.FindElement(By.ClassName("product-card__hero-image")).Click();
+
+// Wait for the product page to load
+Thread.Sleep(5000);
+
+// Selecting a size (assuming size selection is necessary)
+IWebElement us8Label = driver.FindElement(By.XPath("//label[text()='US 8']"));
+us8Label.Click();
+
+// Wait for the size to be selected
+Thread.Sleep(5000);
+
+// Adding the item to cart
+IWebElement addToBagButton = driver.FindElement(By.CssSelector("[aria-label=\"Add to Bag\"]"));
+addToBagButton.Click();
+
+// Wait for the item to be added to cart
+Thread.Sleep(5000);
+
+// Viewing the cart
+driver.FindElement(By.Id("nav-cart")).Click();
+
+// Wait for the cart page to load
+Thread.Sleep(5000);
+
+// Pressing checkout
+driver.FindElement(By.ClassName("css-1okxeqf-PrimaryDarkButton-buttonPaddingBorderRadiusStyles-disabledButtonStyles-primaryDisabledStyles-primaryDarkButtonStyles")).Click();
+
+// Wait for the checkout process to initiate
+Thread.Sleep(5000);
+
+// Closing the webdriver
+driver.Quit();
